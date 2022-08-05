@@ -12,7 +12,7 @@ All Courts is a NodeJS, Express, and MongoDB based app. The purpose of this app 
 
 ### Screenshots
 
-![Home Page](/public/img/screenshot1.jpg "Home Page")
+![Home Page](/public/images/screenshot1.jpg "Home Page")
 ![Index Page (with filters)](/img/screenshot2.jpg "Index Page")
 ![Alternative  Index Page (map)](/img/screenshot3.jpg "Map Page")
 ![Show Page with link to Google Maps](/img/screenshot4.jpg "Show Page")
