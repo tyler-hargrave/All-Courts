@@ -51,25 +51,32 @@
                     Lucky for us there are plenty of clubs in the city. So let's find your next club.
                 </div>
                 <br />
-                <hr />
-                <div class="center">
-                    <a href="/clubs"><button class="grey">List View</button></a>
-                    <a><button class="green">Map View</button></a>
-                </div>
-                <%- include ('../partials/filters.ejs') %>
-
+                <% if (! user) { %>
+                    <hr />
+                    Please login with Google for full site functionality.
                     <br />
-                    <div class="center" style="width:90vw; display: flex; justify-content: center;">
-                        <div id="map" style="width:90vw;height:90vw;max-width: 90vh; max-height: 90vh;"></div>
-                    </div>
-                    <div id="map_content" display="none">
-                        <%= JSON.stringify(map) %>
-                    </div>
-                    <div id="map_centre" display="none">
-                        <%= JSON.stringify(centre) %>
-                    </div>
-                    <br /><br />
-                    <%- include ('../partials/scripts.ejs') %>
+                    <a class="btn green" href="/auth/google">Login with Google</a>
+                    <br />
+                    <% } %>
+                        <hr />
+                        <div class="center">
+                            <a href="/clubs"><button class="grey">List View</button></a>
+                            <a><button class="green">Map View</button></a>
+                        </div>
+                        <%- include ('../partials/filters.ejs') %>
+
+                            <br />
+                            <div class="center" style="width:90vw; display: flex; justify-content: center;">
+                                <div id="map" style="width:90vw;height:90vw;max-width: 90vh; max-height: 90vh;"></div>
+                            </div>
+                            <div id="map_content" display="none">
+                                <%= JSON.stringify(map) %>
+                            </div>
+                            <div id="map_centre" display="none">
+                                <%= JSON.stringify(centre) %>
+                            </div>
+                            <br /><br />
+                            <%- include ('../partials/scripts.ejs') %>
     </body>
 
 </html>

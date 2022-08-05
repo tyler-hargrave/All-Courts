@@ -16,60 +16,69 @@
           Lucky for us there are plenty of clubs in the city. So let's find your next club.
         </div>
         <br />
-        <hr />
-        <div class="center">
-          <a><button class="green">List View</button></a>
-          <a href="/clubs/map"><button class="grey">Map View</button></a>
-        </div>
-        <%- include ('../partials/filters.ejs') %>
+        <% if (! user) { %>
+          <hr />
+          Please login with Google for full site functionality.
+          <br />
+          <a class="btn green" href="/auth/google">Login with Google</a>
+          <br />
+          <% } %>
+            <hr />
+            <div class="center">
+              <a><button class="green">List View</button></a>
+              <a href="/clubs/map"><button class="grey">Map View</button></a>
+            </div>
+            <%- include ('../partials/filters.ejs') %>
 
 
-          <div class="row">
-            <% clubs.forEach(club=> {%>
-              <a href="/clubs/<%= club.id %>">
-                <div class="col s12 m6">
-                  <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                      <span class="card-title">
-                        <%= club.clubName %>
-                      </span>
-                      <b> Lights: </b>
-                      <% if (club.lights){ %>
-                        <span class="green material-icons"> done </span> Yes <% } %>
-                          <% if (! club.lights){ %>
-                            <span class="red material-icons"> close </span> No <% } %> <br /><br />
-                              <b> Surface: </b>
-                              <% if (club.surface==="Clay" ){ %>
-                                <span class="brown material-icons"> grid_view </span> Clay <% } %>
-                                  <% if (club.surface==="Asphalt" ){ %> <span class="black material-icons"> grid_view
-                                    </span>
-                                    Asphalt
-                                    <% } %>
-                                      <% if (club.surface==="Coated" ){ %>
-                                        <span class="green material-icons"> grid_view </span> Coated <% } %>
-                                          <br /><br />
-                                          <b> Membership: </b>
-                                          <% if (club.membership==="Open" ){ %>
-                                            <span class="green material-icons"> group_add </span> Open <% } %>
-                                              <% if (club.membership !="Open" ){ %> <span class="yellow material-icons">
-                                                  group_off
-                                                </span> Waitlist
-                                                <% } %>
-                                                  <br /><br />
-                                                  <b> Annual Cost: </b>
-                                                  <%= club.annual_cost %>
-                                                    <br /><br />
-                                                    <b> Rating: </b>
-                                                    <%= club.rating%> Stars
+              <div class="row">
+                <% clubs.forEach(club=> {%>
+                  <a href="/clubs/<%= club.id %>">
+                    <div class="col s12 m6">
+                      <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                          <span class="card-title">
+                            <%= club.clubName %>
+                          </span>
+                          <b> Lights: </b>
+                          <% if (club.lights){ %>
+                            <span class="green material-icons"> done </span> Yes <% } %>
+                              <% if (! club.lights){ %>
+                                <span class="red material-icons"> close </span> No <% } %> <br /><br />
+                                  <b> Surface: </b>
+                                  <% if (club.surface==="Clay" ){ %>
+                                    <span class="brown material-icons"> grid_view </span> Clay <% } %>
+                                      <% if (club.surface==="Asphalt" ){ %> <span class="black material-icons">
+                                          grid_view
+                                        </span>
+                                        Asphalt
+                                        <% } %>
+                                          <% if (club.surface==="Coated" ){ %>
+                                            <span class="green material-icons"> grid_view </span> Coated <% } %>
+                                              <br /><br />
+                                              <b> Membership: </b>
+                                              <% if (club.membership==="Open" ){ %>
+                                                <span class="green material-icons"> group_add </span> Open <% } %>
+                                                  <% if (club.membership !="Open" ){ %> <span
+                                                      class="yellow material-icons">
+                                                      group_off
+                                                    </span> Waitlist
+                                                    <% } %>
                                                       <br /><br />
+                                                      <b> Annual Cost: </b>
+                                                      <%= club.annual_cost %>
+                                                        <br /><br />
+                                                        <b> Rating: </b>
+                                                        <%= club.rating%> Stars
+                                                          <br /><br />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </a>
+                  </a>
 
-              <%})%>
-          </div>
-          <%- include ('../partials/scripts.ejs') %>
+                  <%})%>
+              </div>
+              <%- include ('../partials/scripts.ejs') %>
       </div>
   </body>
 
