@@ -1,16 +1,16 @@
 # All Courts (Tennis Club Search)
 
-### Key Attributes
+## Key Attributes
 
 Date: 2022-Aug-4
 
 Author Tyler Hargrave
 
-### Introduction
+## Introduction
 
 All Courts is a NodeJS, Express, and MongoDB based app. The purpose of this app is to help people in Toronto find the best tennis club to join! The purpose of building this app was to demonstrate an Express app with Create-Read-Update-Delete functionality.
 
-### Screenshots
+## Screenshots
 
 ![Home Page](/public/images/screenshot1.jpg "Home Page")
 ![Index Page (with filters)](/public/images/screenshot2.jpg "Index Page")
@@ -19,9 +19,9 @@ All Courts is a NodeJS, Express, and MongoDB based app. The purpose of this app 
 ![User Review on Show Page](/public/images/screenshot5.jpg "User Review")
 ![Partner Link](/public/images/screenshot6.jpg "Partner Link")
 
-### Technologies
+## Technologies
 
-#### MEN
+### MEN
 
 MongoDB (with mongoose)
 <br/>
@@ -29,7 +29,7 @@ Express
 <br/>
 NodeJS
 
-#### Frontend
+### Frontend
 
 Design Template: Materialize
 <br/>
@@ -39,31 +39,31 @@ JS: Including Jquery for DOM manipulation
 <br/>
 HTML
 
-#### Deployment
+### Deployment
 
 MongoDB with Atlas
 <br/>
 Heroku
 
-#### APIs
+### APIs
 
 Google Maps
 
-### Getting Started
+## Getting Started
 
 https://allcourts.herokuapp.com/
 
-### Data Mining
+## Data Mining
 
 In order to make the app useful, the initial data mining was performed to populate the clubs. By doing this, the website can be used today by people in Toronto to find a club. I even found some potential clubs to join next year!
 
-### CRUD
+## CRUD
 
 The purpose of the website is to demonstrate CRUD, and that has been done. However, users do not have the ability to add and delete clubs. That would be chaotic. There could be duplicates or clubs with misinformation. That makes the site not useful.
 
 So, the CRUD is done on the user reviews. A review includes three elements (membership status, annual cost, rating) and these are aggregated into the main club details for filtering. The review can be added, read, updated, and deleted on the show page for each club.
 
-### Continued Development
+## Continued Development
 
 To continue the development; the first focus would be to make the users stories a bit more purposeful. There are some detours that the user may make in the process of using the site.
 
