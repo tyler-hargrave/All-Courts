@@ -188,7 +188,7 @@ function newClub(req, res) {
 }
 async function googleClub(club) {
  //Already Found it
- if (club.googleID != undefined) return;
+ if (club.googleID != undefined) return club;
 
  //Create google link
  let location = "43.65107, -79.347015";
