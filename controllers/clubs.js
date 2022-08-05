@@ -94,7 +94,7 @@ async function index(req, res, ref) {
  let clubs = await Club.find({});
 
  for (i = 0; i < clubs.length; i++) {
-  //clubs[i] = googleClub(clubs[i]);
+  clubs[i] = googleClub(clubs[i]);
   clubs[i].annual_cost = getAnnualCost(clubs[i].reviews);
   clubs[i].rating = getRating(clubs[i].reviews);
   clubs[i].membership = getMembership(clubs[i].reviews);
@@ -211,7 +211,7 @@ async function googleClub(club) {
   googleData.found = true;
  }
  club.googleID = googleData.place_id;
- club.phoots = JSON.stringify(googleData.photos);
+ club.photos = JSON.stringify(googleData.photos);
  club.save();
  return club;
 }
