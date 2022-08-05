@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<%- include ('../partials/head.ejs') %>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GOOGLE_MAPS %>&callback=initMap&v=weekly"
+    defer></script>
+  <script type="text/javascript">
+    // Initialize and add the map
+    function initMap() {
+      //Grab the data saved randomly here
+      const googleData = JSON.parse(document.querySelector("#googleData").innerText);
+      document.querySelector("#googleData").innerText = "";
+      const club = JSON.parse(document.querySelector("#club").innerText);
+      document.querySelector("#club").innerText = "";
+
+
+      // The location of Uluru
+      const uluru = {
+        lat: 1 * club.latitude,
+        lng: 1 * club.longitude,
+      };
+      // The map, centered at Uluru
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 15,
+        center: uluru,
+      });
+
+      new google.maps.Marker({
+        position: {
+          lat: 1 * club.latitude,
+          lng: 1 * club.longitude,
+        },
+        map: map,
+      });
+
+      document.getElementById("map").style.height = document.getElementById("map").offsetWidth + "px";
+
+    }
+
+
+    function addReview(e) {
+      document.querySelector('#reviewForm').style.display = ''
+      document.querySelector('#addReview').style.display = 'none'
+    }
+
+    window.initMap = initMap;
+  </script>
+
+  <body>
+    <%- include ('../partials/navbar.ejs') %>
+      <div class="content">
+        <h1>
+          <%= club.clubName %>
+        </h1>
+        <div class="row">
+          <div class="col s12 m6">
+            <div id="map" style="width: 100%"></div>
+            <div class="center">
+              <a target="_blank" href="https://www.google.com/maps/place/?q=place_id:<%=club.googleID%>"><button
+                  class="green" style="width: 100%; padding: 1rem">Go to Google Maps</button></a>
+            </div>
+          </div>
+          <div class="col s12 m6">
+            <h4> Club Details </h4>
+            <%- include ('../partials/oneClub.ejs') %>
+              <% if (myReview.status===false){ %>
+                <div id="addReview" class="center">
+                  <button onclick="addReview()" class="green" style="padding: 1rem">
+                    Add A Review
+                  </button>
+                </div>
+                <form style="display: none" id="reviewForm" action="/clubs/<%=club.id%>/reviews" method="post">
+                  <h4>My Club Review </h4>
+                  <% } if (myReview.status){ %>
+                    <h4>My Club Review
+                      <form action="?_method=DELETE" method="POST" style="display:inline">
+                        <button class="btn red iconButton"><span class="white-text material-symbols-outlined">
+                            Delete
+                          </span></button>
+                      </form>
+                    </h4>
+                    <form id="reviewForm" action="/clubs/<%=club.id%>/reviews" method="post"></form>
+                    <% } %>
+                      <div class="white-text input-field">
+                        <b> Membership </b>
+                        <select name="membership" id="membership">
+                          <option selected value="Open">Open</option>
+                          <option value="Waitlist">Waitlist</option>
+                          <option value="Closed">Closed</option>
+                        </select>
+                      </div>
+                      <div class="input-field">
+                        <b> Annual Cost</b>
+                        <select name="annual_cost" id="annual_cost">
+                          <option selected value="Unknown">Unknown</option>
+                          <option value="$0 - $100">$0 - $100</option>
+                          <option value="$100 - $300">$100 - $300</option>
+                          <option value="$300 - $1000">$300 - $1000</option>
+                          <option value="$1000+">$1000+</option>
+                        </select>
+                      </div>
+                      <div class=" input-field">
+                        <b> Rating</b>
+                        <select name="rating" id="rating">
+                          <option value="1"> 1 Star </option>
+                          <option value="2"> 2 Stars </option>
+                          <option selected value="3"> 3 Stars </option>
+                          <option value=" 4"> 4 Stars </option>
+                          <option value="5"> 5 Stars </option>
+                        </select>
+                      </div>
+                      <input type="submit" value="Submit" class="btn green">
+                </form>
+          </div>
+        </div>
+        <%- include ('../partials/scripts.ejs') %>
+      </div>
+      <div id="googleData" style="display:none">
+        <%= JSON.stringify(googleData) %>
+      </div>
+      <div id="club" style="display:none">
+        <%= JSON.stringify(club) %>
+      </div>
+      <%- include ('../partials/scripts.ejs') %>
+  </body>
+  <% if (myReview.status===undefined || myReview.status===true ){ %>
+    <script>
+      document.querySelector("#annual_cost").value = "<%= myReview.annual_cost %>"
+      document.querySelector("#membership").value = "<%= myReview.membership %>"
+      document.querySelector("#rating").value = "<%= myReview.rating %>"
+    </script>
+    <% } %>
+
+</html>

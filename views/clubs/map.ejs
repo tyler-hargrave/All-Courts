@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<%- include ('../partials/head.ejs') %>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK-cqvfGfe-y4s9jh8yh1KYI_zzvk-tyw&callback=initMap&v=weekly"
+        defer></script>
+    <script type="text/javascript">
+        // Initialize and add the map
+        function initMap() {
+
+            const clubs = JSON.parse(document.querySelector("#map_content").innerText)
+            document.querySelector("#map_content").innerText = ""
+            const centre = JSON.parse(document.querySelector("#map_centre").innerText)
+            document.querySelector("#map_centre").innerText = ""
+
+
+            const mapCentre = { lat: centre.latitude, lng: centre.longitude };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 11,
+                center: mapCentre,
+            });
+
+
+
+            clubs.forEach((x) => {
+                marker = new google.maps.Marker({
+                    position: { lat: 1 * x.latitude, lng: 1 * x.longitude },
+                    map: map,
+                    title: x.clubName
+                });
+                marker.addListener("click", () => {
+                    location.href = "/clubs/" + x.id
+                });
+            })
+        }
+
+        window.initMap = initMap;
+    </script>
+
+    <body>
+        <%- include ('../partials/navbar.ejs') %>
+            <div class="content">
+                <div>
+                    Toronto has many amazing public free tennis courts (<a href="../connactiveclub"> More Info</a> )
+                    that are great
+                    for getting out and playing with your friends. <br /><br />
+                    But sometimes you are looking for a bit more... <br />
+                    ... a bit more competition (ladders, house-leagues, teams) <br />
+                    ... a bit more organization (court bookings, lights) <br />
+                    ... a bit more friends (new players for your tennis circle) <br /><br />
+                    Lucky for us there are plenty of clubs in the city. So let's find your next club.
+                </div>
+                <br />
+                <hr />
+                <div class="center">
+                    <a href="/clubs"><button class="grey">List View</button></a>
+                    <a><button class="green">Map View</button></a>
+                </div>
+                <%- include ('../partials/filters.ejs') %>
+
+                    <br />
+                    <div class="center" style="width:90vw; display: flex; justify-content: center;">
+                        <div id="map" style="width:90vw;height:90vw;max-width: 90vh; max-height: 90vh;"></div>
+                    </div>
+                    <div id="map_content" display="none">
+                        <%= JSON.stringify(map) %>
+                    </div>
+                    <div id="map_centre" display="none">
+                        <%= JSON.stringify(centre) %>
+                    </div>
+                    <br /><br />
+                    <%- include ('../partials/scripts.ejs') %>
+    </body>
+
+</html>

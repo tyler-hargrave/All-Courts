@@ -1,0 +1,81 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+/*BODY SIZE*/
+body .content {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 1rem;
+}
+
+/* CUSTOM COLOURS */
+nav,
+body,
+#nav-mobile,
+#nav-mobile *,
+input {
+  background-color: rgba(50, 50, 50, 1);
+  color: white !important;
+}
+
+
+/* TEXT OVERLAY ON IMAGES */
+.picture-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+.card-landing {
+  position: absolute;
+  z-index: 10;
+  top: 25%;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.cardbg {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ICONS */
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+.iconButton {
+  display: inline-flex;
+  align-content: center;
+  justify-items: center;
+}
+
+.iconButton * {
+  margin: auto
+}

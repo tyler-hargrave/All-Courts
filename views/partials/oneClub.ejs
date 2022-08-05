@@ -1,0 +1,26 @@
+<b> Lights: </b>
+<% if (club.lights){ %>
+ <span class="green material-icons"> done </span> Yes <% } %>
+  <% if (! club.lights){ %>
+   <span class="red material-icons"> close </span> No <% } %> <br /><br />
+    <b> Surface: </b>
+    <% if (club.surface==="Clay" ){ %>
+     <span class="brown material-icons"> grid_view </span> Clay <% } %>
+      <% if (club.surface==="Asphalt" ){ %> <span class="black material-icons"> grid_view </span>
+       Asphalt
+       <% } %>
+        <% if (club.surface==="Coated" ){ %>
+         <span class="green material-icons"> grid_view </span> Coated <% } %> <br /><br />
+          <b> Membership: </b>
+          <% if (club.membership==="Open" ){ %>
+           <span class="green material-icons"> group_add </span> Open <% } %>
+            <% if (club.membership !="Open" ){ %> <span class="yellow material-icons"> group_off
+             </span> Waitlist
+             <% } %>
+              <br /><br />
+              <b> Annual Cost: </b>
+              <%= club.annual_cost %>
+               <br /><br />
+               <b> Rating: </b>
+               <%= club.rating%> Stars
+                <br /><br />

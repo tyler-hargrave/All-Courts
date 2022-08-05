@@ -1,0 +1,36 @@
+<nav class="dark-grey" role="navigation">
+   <div class="nav-wrapper container">
+      <a id="logo-container" href="/" class="brand-logo"><span class="green-text material-symbols-outlined">
+            sports_tennis
+         </span>&nbsp;All Courts</a>
+      <ul class="right hide-on-med-and-down">
+         <li><a href="/">Home</a></li>
+         <li><a href="/clubs">Courts</a></li>
+         <li><a href="/connactiveclub">Public Courts</a></li>
+         <% if (user) { if (user.admin) {%>
+            <li> ADMIN </li>
+            <% }} %>
+               <li>
+                  <% if (user) { %>
+                     <a href="/logout">Log Out</a>
+                     <% } else { %>
+                        <a href="/auth/google">Login with Google</a>
+                        <% } %>
+               </li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+         <li><a href="/">Home</a></li>
+         <li><a href="/clubs">Clubs</a></li>
+         <li><a href="/connactiveclub">Public Courts</a></li>
+         <li>
+            <% if (user) { %>
+               <a href="/logout">Log Out</a>
+               <% } else { %>
+                  <a href="/auth/google">Login with Google</a>
+                  <% } %>
+         </li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+   </div>
+</nav>

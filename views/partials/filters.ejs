@@ -1,0 +1,64 @@
+<div>
+ <form class="col s12" id="filterForm" action="?" method="get">
+  <div class="row">
+   <div class="input-field col s6">
+    <input value="<%= filter.clubName %>" name="clubName" id="clubName" type="text" class="validate white-text" />
+    <label for="clubName">Club Name</label>
+   </div>
+   <div class="col s6">
+    <label>Rating</label>
+    <p class="range-field">
+     <input value="<%= filter.rating %>" name="rating" , id="rating" type="range" min="1" max="5" class="range" />
+    </p>
+   </div>
+   <div class="input-field col s6">
+    <select name="lights" id="lights">
+     <option selected value="All">All</option>
+     <option value="Yes">Yes</option>
+     <option value="No">No</option>
+    </select>
+    <label for="lights">Lights</label>
+   </div>
+   <div class=" input-field col s6">
+    <select name="annual_cost" id="annual_cost">
+     <option value="All">All</option>
+     <option value="$0 - $100">$0 - $100</option>
+     <option value="$100 - $300">$100 - $300</option>
+     <option value="$300 - $1000">$300 - $1000</option>
+     <option value="$1000+">$1000+</option>
+    </select>
+    <label for="annual_cost">Annual Cost</label>
+   </div>
+   <div class=" input-field col s6">
+    <select name="membership" id="membership">
+     <option selected value="All">All</option>
+     <option value="Open">Open</option>
+     <option value="Waitlist">Waitlist</option>
+     <option value="Closed">Closed</option>
+    </select>
+    <label for="membership">Membership</label>
+   </div>
+   <div class=" input-field col s6">
+    <select name="surface" id="surface">
+     <option selected value="All">All</option>
+     <option value="Coated">Coated</option>
+     <option value="Asphalt">Asphalt</option>
+     <option value="Clay">Clay</option>
+    </select>
+    <label for="surface">Surface</label>
+   </div>
+  </div>
+  <div class=" row center">
+   <button type="submit">Apply Filters</button>
+  </div>
+ </form>
+</div>
+<hr />
+<script>
+ document.querySelector("#lights").value = "<%= filter.lights %>"
+ document.querySelector("#annual_cost").value = "<%= filter.annual_cost %>"
+ document.querySelector("#membership").value = "<%= filter.membership %>"
+ document.querySelector("#surface").value = "<%= filter.surface %>"
+
+
+</script>
