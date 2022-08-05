@@ -21,23 +21,33 @@ All Courts is a NodeJS, Express, and MongoDB based app. The purpose of this app 
 
 ### Technologies
 
-MEN
+#### MEN
 MongoDB (with mongoose)
+<br/>
 Express
+<br/>
 NodeJS
 
+<<<<<<< HEAD
 Frontend
 <br/>
+=======
+#### Frontend
+>>>>>>> fe24939e4f01a1405446c40f7785db4cea096ada
 Design Template: Materialize
+<br/>
 CSS: Including Flexbox, Grid
+<br/>
 JS: Including Jquery for DOM manipulation
+<br/>
 HTML
 
-Deployment
+#### Deployment
 MongoDB with Atlas
+<br/>
 Heroku
 
-APIs
+#### APIs
 Google Maps
 
 ### Getting Started
