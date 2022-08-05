@@ -94,7 +94,7 @@ async function index(req, res, ref) {
  let clubs = await Club.find({});
 
  for (i = 0; i < clubs.length; i++) {
-  clubs[i] = googleClub(clubs[i]);
+  googleClub(clubs[i]);
   clubs[i].annual_cost = getAnnualCost(clubs[i].reviews);
   clubs[i].rating = getRating(clubs[i].reviews);
   clubs[i].membership = getMembership(clubs[i].reviews);
@@ -188,7 +188,7 @@ function newClub(req, res) {
 }
 async function googleClub(club) {
  //Already Found it
- if (club.googleID != undefined) return club;
+ if (club.googleID != undefined) return;
 
  //Create google link
  let location = "43.65107, -79.347015";
@@ -213,7 +213,6 @@ async function googleClub(club) {
  club.googleID = googleData.place_id;
  club.photos = JSON.stringify(googleData.photos);
  club.save();
- return club;
 }
 async function saveReview(req, res) {
  Club.findById(req.params.id, function (err, club) {
